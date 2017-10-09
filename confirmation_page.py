@@ -1,85 +1,40 @@
 from tkinter import *
 
-def leftClick(event):
-    print("You messed up")
 
-votes = {'President': 'Dracula', 'Vice President': 'The Wolfman', 'Secretary of State': 'Frankenstein\'s Monster',
+def leftClick(event): #Just a do nothing function to be replaced later
+    print("You blew it")
+
+#Map/Dictionary element contains the name of each office up for election and the voter's choice for that office
+how_they_voted = {'President': 'Dracula', 'Vice President': 'The Wolfman', 'Secretary of State': 'Frankenstein\'s Monster',
          'Secretary of the Interior': 'Bigfoot', 'Head of the EPA': 'Swamp Thing', 'Secretary of Health and Human'
-                                                                                      'Services': 'The Mummy'}
-for key, value in votes.items():
+                                                                                   'Services': 'The Mummy'}
+#prints the elements of the Map?Dictionary. For testing only
+for key, value in how_they_voted.items(): #passes through dictionary and prints keys and values
     print(key, ': ', value)
 
-print (len(votes))
+#print("The number of positions being elected is: ",len(how_they_voted))
 
-root =Tk()
-root.geometry("500x300")
-root.wm_title("Final Confirmation")
+root = Tk()
+root.geometry("500x300") #formats the gui to specified size
+root.wm_title("Final Confirmation") #creates title for gui
 
+#initilize two empty lists
+final_results = []
+final_button = []
+#index used for positioning the buttons and labels
+index = 0
+for key, value in how_they_voted.items():
+    temp_result = Label(root, text=key + ": " + ' ' + value)
+    temp_result.grid(row=index, column=0, sticky=W)
+    final_results.append(temp_result)
 
-'''
-i = 0
-j = 1
-l = 2
+    temp_button = Button(root, text="Change Vote")
+    final_button.append(temp_button)
+    final_button[index].bind("<Button-1>", leftClick)
+    final_button[index].grid(row=index, column=3)
 
-while i <= len(votes):
+    index = index + 1
 
-    for key, value in votes.items():
-        
-        i = Label(root, text=key)
-        i.pack()
-        #i.grid(row=i, column=0, sticky=E)
-
-        j = Label(root, text=value)
-        j.pack()
-        #j.grid(row=i, column=2)
-
-        l = Button(root, text="Change Vote")
-        l.bind("<Button-1>", leftClick)
-        l.pack()
-        #l.grid(row=i, column=3)
-
-        i+=3
-        j+=3
-        l+=3
-
-'''
-counter = len(votes)
-
-final_votes = [Label(root, text="President:" + ' ' + "Bigfoot")]
-final_votes[0].grid(row=0, column=0, sticky=W)
-
-final_button = [Button(root, text="Change Vote")]
-final_button[0].bind("<Button-1>", leftClick)
-final_button[0].grid(row=0, column=3)
-
-counter
-
-'''i = 0
-while(<=i*2)
-    final_votes[i] = Label(root, text="President:" + ' ' + "Bigfoot")
-    final_votes[i].grid(row=counter, column=0, sticky=W)
-
-    final_votes[i+1] = Button(root, text="Change Vote")
-    final_votes[i+1].bind("<Button-1>", leftClick)
-    final_votes[i+1].grid(row=0, column=3)
-
-    counter+=2'''
-
-'''
-election_1 =Label(root, text="President:" + ' ' + "Bigfoot")
-election_1.grid(row=0, column=0, sticky=W)
-
-button_1 = Button(root, text="Change Vote")
-button_1.bind("<Button-1>", leftClick)
-button_1.grid(row=0, column=3)
-
-election_2 =Label(root, text="Vice President:" + ' ' + "The Wolfman")
-election_2.grid(row=1, column=0, sticky=W)
-
-
-button_2 = Button(root, text="Change Vote")
-button_2.bind("<Button-1>", leftClick)
-button_2.grid(row=1, column=3)
-'''
 
 root.mainloop()
+
