@@ -13,5 +13,5 @@ lesson 7 covers:
 lesson 8 covers:
 lesson 9 covers:
 lesson 10 covers: Toolbars and dropdown menues
-lesson 11 covers:
+lesson 11 covers: Adding the status bar
 lesson 12 covers: tkinter.messagebox which provides message box windows
